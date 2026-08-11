@@ -71,7 +71,7 @@ function CardActions({ product }: { product: Product }) {
   };
 
   return (
-    <div className="flex w-full items-center gap-2">
+    <div className="flex w-full flex-col gap-2 md:flex-row md:items-center">
       <Button
         type="button"
         variant="outline"
@@ -94,7 +94,7 @@ function CardActions({ product }: { product: Product }) {
         type="button"
         onClick={handleBuyNow}
         disabled={outOfStock}
-        className="flex-1 rounded-lg"
+        className="flex-1 py-1 rounded-lg"
         aria-label={`Buy ${product.name} now`}
       >
         <ShoppingBag className="size-4" /> Buy Now
