@@ -106,7 +106,7 @@ const appConfig = {
   },
 } as const;
 
-function CheckoutLinkBadge({
+export function CheckoutLinkBadge({
   app,
   amount,
 }: {

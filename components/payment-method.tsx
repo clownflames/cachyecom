@@ -4,7 +4,7 @@ import { Banknote, QrCode, type LucideIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-export type PaymentMethodValue = "QR" | "COD";
+export type PaymentMethodValue = "UPI" | "COD";
 
 const options: {
   value: PaymentMethodValue;
@@ -13,9 +13,9 @@ const options: {
   icon: LucideIcon;
 }[] = [
   {
-    value: "QR",
-    label: "Pay via QR Code",
-    desc: "Scan & pay instantly with any UPI app",
+    value: "UPI",
+    label: "Pay via UPI",
+    desc: "Pay with Amazon Pay, PhonePe, or Google Pay",
     icon: QrCode,
   },
   {

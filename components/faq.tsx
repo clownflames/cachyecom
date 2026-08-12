@@ -13,11 +13,11 @@ const faqs = [
   },
   {
     q: "What payment methods do you accept?",
-    a: "We accept QR / UPI payments and Cash on Delivery. For QR payments you scan our UPI QR code, pay the exact amount, and submit your Transaction ID / UTR while placing the order.",
+    a: "We accept UPI payments and Cash on Delivery. For UPI payments you can use Amazon Pay, PhonePe, or Google Pay, pay the exact amount, and submit your Transaction ID / UTR while placing the order.",
   },
   {
     q: "How does QR / UPI payment work?",
-    a: "At checkout, choose 'Pay via QR Code'. Scan the QR with your UPI app, pay the exact order amount, then enter the Transaction ID / UTR in the checkout form. Your payment is marked 'Verification Pending' until we confirm it manually.",
+    a: "At checkout, choose 'Pay via UPI'. Select Amazon Pay, PhonePe, or Google Pay, pay the exact order amount, then enter the Transaction ID / UTR in the checkout form. Your payment is marked 'Verification Pending' until we confirm it manually.",
   },
   {
     q: "Is Cash on Delivery available?",

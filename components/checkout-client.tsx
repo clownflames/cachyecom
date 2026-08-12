@@ -7,7 +7,7 @@ import { CircleAlert, Loader2, Lock, ShoppingBag } from "lucide-react";
 import { placeOrder } from "@/app/actions/order";
 import { useCart } from "@/components/cart-provider";
 import { PaymentMethodRadio, type PaymentMethodValue } from "@/components/payment-method";
-import { QrPayment } from "@/components/qr-payment";
+import { QrPayment, CheckoutLinkBadge } from "@/components/qr-payment";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -66,7 +66,7 @@ export function CheckoutClient() {
     pincode: "",
     landmark: "",
   });
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethodValue>("QR");
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethodValue>("UPI");
   const [transactionId, setTransactionId] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -165,7 +165,7 @@ export function CheckoutClient() {
     );
   }
 
-  const isQr = paymentMethod === "QR";
+  const isUpi = paymentMethod === "UPI";
 
   return (
     <form
@@ -360,39 +360,16 @@ export function CheckoutClient() {
             />
           </div>
 
-          {isQr ? (
+          {isUpi ? (
             <div className="mt-5">
-              <QrPayment amount={subtotal} />
-              <div className="mt-4">
-                <Field
-                  id="transactionId"
-                  label="Transaction ID / UTR"
-                  required
-                  error={errors.transactionId}
-                >
-                  <Input
-                    id="transactionId"
-                    value={transactionId}
-                    onChange={(e) =>
-                      setTransactionId(
-                        e.target.value.replace(/[^A-Za-z0-9.\-_:/ ]/g, "")
-                      )
-                    }
-                    placeholder="Enter your UPI Transaction ID / UTR"
-                    maxLength={60}
-                    aria-invalid={!!errors.transactionId}
-                    aria-describedby={
-                      errors.transactionId ? "transactionId-error" : undefined
-                    }
-                  />
-                </Field>
-                <p className="mt-2 flex items-start gap-1.5 text-xs text-muted-foreground">
-                  <Lock className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
-                  Entering a Transaction ID does not confirm payment. Your order
-                  is placed with <strong>Payment Status: Verification Pending</strong>{" "}
-                  until we verify it manually.
-                </p>
+              <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
+                <CheckoutLinkBadge app="gpay" amount={subtotal} />
+                <CheckoutLinkBadge app="phonepe" amount={subtotal} />
+                <CheckoutLinkBadge app="amazon" amount={subtotal} />
               </div>
+              <p className="mt-4 text-center text-sm text-muted-foreground">
+                Amount to Pay: <span className="text-lg font-black">{formatPrice(subtotal)}</span>
+              </p>
             </div>
           ) : (
             <div className="mt-5 rounded-xl bg-muted/50 p-4 text-sm">
@@ -417,7 +394,7 @@ export function CheckoutClient() {
               <Loader2 className="size-4 animate-spin" aria-hidden="true" />
               Placing Order...
             </>
-          ) : isQr ? (
+          ) : isUpi ? (
             "Confirm Payment & Place Order"
           ) : (
             "Place COD Order"

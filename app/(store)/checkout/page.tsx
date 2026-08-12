@@ -5,7 +5,7 @@ import { CheckoutClient } from "@/components/checkout-client";
 export const metadata: Metadata = {
   title: "Checkout",
   description:
-    "Secure checkout with QR / UPI payment or Cash on Delivery.",
+    "Secure checkout with UPI payment or Cash on Delivery.",
 };
 
 export default function CheckoutPage() {

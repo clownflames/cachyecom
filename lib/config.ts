@@ -1,4 +1,4 @@
-export const SITE_NAME = "BIG DEAL";
+export const SITE_NAME = "FlipKart";
 
 export const SITE_TAGLINE = "BIG SALE IS LIVE NOW";
 

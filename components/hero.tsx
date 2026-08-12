@@ -29,16 +29,20 @@ export function Hero() {
     <section className="border-b border-border bg-background overflow-hidden relative">
       <div className="mx-auto max-w-7xl px-3 sm:px-6 relative">
         {/* Carousel Container */}
-        <div className="relative h-64 sm:h-80 rounded-lg overflow-hidden">
+        <div className="relative h-48 sm:h-64 md:h-80 rounded-lg overflow-hidden bg-gray-100">
           {bannerImages.map((img, i) => (
             <img
               key={i}
               src={img}
               alt={`Banner ${i + 1}`}
               className={cn(
-                "absolute left-0 top-0 w-full h-full object-cover transition-opacity duration-500",
+                "absolute left-0 top-0 w-full h-full transition-opacity duration-500",
                 i === index ? "opacity-100" : "opacity-0"
               )}
+              style={{
+                objectFit: "contain",
+                objectPosition: "center",
+              }}
             />
           ))}
         </div>
@@ -51,7 +55,7 @@ export function Hero() {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-8 h-8 drop-shadow-lg"
+            className="w-6 h-6 sm:w-8 sm:h-8 drop-shadow-lg"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -72,7 +76,7 @@ export function Hero() {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-8 h-8 drop-shadow-lg"
+            className="w-6 h-6 sm:w-8 sm:h-8 drop-shadow-lg"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -93,9 +97,9 @@ export function Hero() {
               key={i}
               onClick={() => goToSlide(i)}
               className={cn(
-                "w-3 h-3 rounded-full transition-all focus:outline-none",
+                "w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all focus:outline-none",
                 i === index
-                  ? "bg-white w-6"
+                  ? "bg-white w-4 sm:w-6"
                   : "bg-white/50 hover:bg-white/80"
               )}
               aria-label={`Go to banner ${i + 1}`}
