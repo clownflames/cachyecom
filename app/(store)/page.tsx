@@ -34,10 +34,9 @@ export default function HomePage() {
         className="mx-auto w-full max-w-7xl px-3 sm:px-6"
       >
         <SectionHeader
-          title="Deals of the Day"
-          subtitle="Biggest discounts - updated today"
-          href="/products?sort=discount"
-          className="mb-4"
+          title="Deal of the Day"
+          subtitle="Grab the best offers"
+          showSaleBadge={true}
         />
         <div className="rounded-lg bg-white p-4 shadow-sm sm:p-5">
           <ProductGrid items={deals} className="xl:grid-cols-5" />

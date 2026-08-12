@@ -48,8 +48,8 @@ export function Footer() {
             alt={SITE_NAME}
             width={90}
             height={34}
-            className="h-9 w-auto object-contain brightness-0 invert"
-            unoptimized
+            className="h-9 w-auto object-contain inverted "
+            
           />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-400">
             {SITE_DESCRIPTION} Catch the biggest sale of the season with
