@@ -11,9 +11,9 @@ const messages = [
 
 export function AnnouncementBar() {
   return (
-    <div className="relative z-40 flex items-center gap-3 overflow-hidden bg-primary px-4 py-2 text-primary-foreground">
+    <div className="relative z-50 flex items-center gap-3 overflow-hidden bg-[#172337] px-4 py-2 text-white">
       <div className="hidden shrink-0 items-center gap-2 sm:flex">
-        <BadgePercent className="size-4" aria-hidden="true" />
+        <BadgePercent className="size-4 text-[#ffe500]" aria-hidden="true" />
         <span className="text-xs font-bold uppercase tracking-wider">
           {SITE_TAGLINE}
         </span>
@@ -27,7 +27,7 @@ export function AnnouncementBar() {
                   key={msg}
                   className="flex items-center gap-2 text-xs font-medium"
                 >
-                  <span className="size-1.5 rounded-full bg-primary-foreground/80" />
+                  <span className="size-1.5 rounded-full bg-[#ffe500]" />
                   {msg}
                 </span>
               ))}
@@ -37,7 +37,7 @@ export function AnnouncementBar() {
       </div>
       <Link
         href="/products"
-        className="hidden shrink-0 rounded-full bg-primary-foreground px-3 py-1 text-xs font-bold text-primary transition-opacity hover:opacity-90 sm:block"
+        className="hidden shrink-0 rounded-sm bg-[#ffe500] px-3 py-1 text-xs font-bold text-[#172337] transition-opacity hover:opacity-90 sm:block"
       >
         Shop Now
       </Link>

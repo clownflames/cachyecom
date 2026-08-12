@@ -103,12 +103,12 @@ export default async function ProductPage({ params }: Props) {
             </Link>
           </div>
 
-          <h1 className="mt-3 text-2xl font-black leading-tight tracking-tight sm:text-3xl">
+          <h1 className="mt-3 text-2xl font-bold leading-tight tracking-tight text-[#212121] sm:text-3xl">
             {product.name}
           </h1>
 
           <div className="mt-3 flex items-center gap-3">
-            <span className="flex items-center gap-1 rounded-md bg-emerald-600 px-2 py-1 text-sm font-bold text-white">
+            <span className="fk-rating flex items-center gap-1 rounded-sm px-1.5 py-0.5 text-sm font-bold text-white">
               {product.rating}
               <Star className="size-3.5 fill-white text-white" aria-hidden="true" />
             </span>
@@ -118,15 +118,15 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           {/* Price block */}
-          <div className="mt-5 rounded-xl border border-border bg-muted/40 p-4 sm:p-5">
+          <div className="mt-5 rounded-lg border border-border bg-white p-4 shadow-sm sm:p-5">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="text-3xl font-black tracking-tight">
+              <span className="text-3xl font-bold tracking-tight text-[#212121]">
                 {formatPrice(product.salePrice)}
               </span>
               <span className="text-lg text-muted-foreground line-through">
                 {formatPrice(product.originalPrice)}
               </span>
-              <span className="text-sm font-bold text-emerald-600">
+              <span className="fk-price text-sm font-bold">
                 {product.discountPercentage}% OFF
               </span>
             </div>
@@ -158,7 +158,7 @@ export default async function ProductPage({ params }: Props) {
               <span className="font-semibold text-destructive">Out of Stock</span>
             ) : (
               <>
-                <span className="font-semibold text-emerald-600">In Stock</span>
+                <span className="fk-price font-semibold">In Stock</span>
                 <span className="ml-1 text-muted-foreground">
                   ({product.stock} available)
                 </span>
@@ -192,8 +192,8 @@ export default async function ProductPage({ params }: Props) {
 
       {/* Details */}
       <div className="mt-12 grid gap-8 lg:grid-cols-2">
-        <div className="rounded-xl border border-border bg-card p-5 sm:p-6">
-          <h2 className="text-lg font-black">Description</h2>
+        <div className="rounded-lg border border-border bg-card p-5 shadow-sm sm:p-6">
+          <h2 className="text-lg font-bold text-[#212121]">Description</h2>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             {product.description}
           </p>
@@ -215,8 +215,8 @@ export default async function ProductPage({ params }: Props) {
           )}
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-5 sm:p-6">
-          <h2 className="text-lg font-black">Specifications</h2>
+        <div className="rounded-lg border border-border bg-card p-5 shadow-sm sm:p-6">
+          <h2 className="text-lg font-bold text-[#212121]">Specifications</h2>
           <dl className="mt-3 divide-y divide-border">
             {Object.entries(product.specifications).map(([key, value]) => (
               <div

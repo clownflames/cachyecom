@@ -42,7 +42,7 @@ export default async function ProductsPage({
         </ol>
       </nav>
 
-      <h1 className="mb-5 text-2xl font-black tracking-tight sm:text-3xl">
+      <h1 className="mb-5 text-2xl font-bold tracking-tight text-[#212121] sm:text-3xl">
         Shop All Products
       </h1>
 

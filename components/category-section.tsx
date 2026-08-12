@@ -28,33 +28,20 @@ const categoryIcons: Record<string, LucideIcon> = {
   Accessories: Cable,
 };
 
-const accentClasses = [
-  "bg-red-100 text-red-600",
-  "bg-orange-100 text-orange-600",
-  "bg-amber-100 text-amber-600",
-  "bg-emerald-100 text-emerald-600",
-  "bg-sky-100 text-sky-600",
-  "bg-violet-100 text-violet-600",
-  "bg-rose-100 text-rose-600",
-  "bg-teal-100 text-teal-600",
-  "bg-indigo-100 text-indigo-600",
-  "bg-fuchsia-100 text-fuchsia-600",
-];
-
 export function CategorySection() {
   return (
-    <section aria-labelledby="categories-heading">
-      <div className="flex items-center justify-between gap-4">
+    <section aria-labelledby="categories-heading" className="rounded-lg bg-white shadow-sm">
+      <div className="flex items-center justify-between border-b border-border px-4 py-3 sm:px-5">
         <h2
           id="categories-heading"
-          className="text-xl font-black tracking-tight sm:text-2xl lg:text-3xl"
+          className="text-base font-bold tracking-tight text-[#212121] sm:text-lg"
         >
           Shop by Category
         </h2>
       </div>
 
-      <div className="mt-5 grid grid-cols-3 gap-2.5 sm:grid-cols-5 sm:gap-4 lg:grid-cols-10">
-        {CATEGORIES.map((category, index) => {
+      <div className="grid grid-cols-3 gap-1 p-3 sm:grid-cols-5 sm:p-4 lg:grid-cols-10">
+        {CATEGORIES.map((category) => {
           const Icon = categoryIcons[category] ?? Cpu;
           const count = products.filter(
             (p) => p.category.toLowerCase() === category.toLowerCase()
@@ -63,17 +50,19 @@ export function CategorySection() {
             <Link
               key={category}
               href={`/products?category=${encodeURIComponent(category)}`}
-              className="group flex flex-col items-center gap-2 rounded-xl border border-border bg-card p-3 text-center shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md sm:p-4"
+              className="group flex flex-col items-center gap-1.5 rounded-sm px-2 py-3 text-center transition-colors hover:bg-[#f5faff]"
             >
-              <span
-                className={`grid size-10 place-items-center rounded-full ${accentClasses[index % accentClasses.length]}`}
-              >
-                <Icon className="size-5" aria-hidden="true" />
+              <span className="grid size-12 place-items-center rounded-full bg-[#f1f3f6] transition-colors group-hover:bg-[#2874f0]/10">
+                <Icon
+                  className="size-6 text-[#2874f0]"
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                />
               </span>
-              <span className="text-xs font-semibold leading-tight sm:text-sm">
+              <span className="text-xs font-semibold leading-tight text-[#212121] group-hover:text-[#2874f0]">
                 {category}
               </span>
-              <span className="hidden text-[11px] text-muted-foreground sm:block">
+              <span className="hidden text-[10px] text-[#878787] sm:block">
                 {count} products
               </span>
             </Link>

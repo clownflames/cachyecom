@@ -43,11 +43,11 @@ export function FaqSection() {
       <div className="mb-5 text-center sm:mb-7">
         <h2
           id="faq-heading"
-          className="text-xl font-black tracking-tight sm:text-2xl lg:text-3xl"
+          className="text-xl font-bold tracking-tight text-[#212121] sm:text-2xl"
         >
           Frequently Asked Questions
         </h2>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <p className="mt-1 text-sm text-[#878787]">
           Everything you need to know before you shop.
         </p>
       </div>
@@ -56,7 +56,7 @@ export function FaqSection() {
         {faqs.map((faq, index) => (
           <details
             key={faq.q}
-            className="group rounded-xl border border-border bg-card shadow-sm"
+            className="group rounded-sm border border-border bg-card shadow-sm"
             open={index === 0}
           >
             <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 font-semibold sm:px-5 [&::-webkit-details-marker]:hidden">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Banknote,
   CreditCard,
@@ -38,23 +39,23 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t border-border bg-muted/40">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
+    <footer className="mt-auto bg-[#172337] text-background">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 text-gray-300 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
         {/* Brand */}
         <div>
-          <div className="flex items-center gap-2">
-            <span className="grid size-9 place-items-center rounded-lg bg-primary text-sm font-black text-primary-foreground">
-              BD
-            </span>
-            <span className="text-lg font-black tracking-tight">
-              BIG<span className="text-primary">DEAL</span>
-            </span>
-          </div>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+          <Image
+            src="/logo.jpg"
+            alt={SITE_NAME}
+            width={90}
+            height={34}
+            className="h-9 w-auto object-contain brightness-0 invert"
+            unoptimized
+          />
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-400">
             {SITE_DESCRIPTION} Catch the biggest sale of the season with
             unbeatable prices on the latest gadgets and essentials.
           </p>
-          <div className="mt-4 space-y-2 text-sm text-muted-foreground">
+          <div className="mt-4 space-y-2 text-sm text-gray-400">
             {STORE_PHONE && (
               <p className="flex items-center gap-2">
                 <Phone className="size-4 shrink-0" aria-hidden="true" />
@@ -76,7 +77,7 @@ export function Footer() {
 
         {/* Shop */}
         <nav aria-label="Shop links">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground">
+          <h2 className="text-sm font-semibold tracking-wider text-white uppercase">
             Shop
           </h2>
           <ul className="mt-4 space-y-2.5">
@@ -84,7 +85,7 @@ export function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                  className="text-sm text-gray-400 transition-colors hover:text-white"
                 >
                   {link.label}
                 </Link>
@@ -95,7 +96,7 @@ export function Footer() {
 
         {/* Support */}
         <nav aria-label="Customer support links">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground">
+          <h2 className="text-sm font-semibold tracking-wider text-white uppercase">
             Customer Support
           </h2>
           <ul className="mt-4 space-y-2.5">
@@ -103,7 +104,7 @@ export function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                  className="text-sm text-gray-400 transition-colors hover:text-white"
                 >
                   {link.label}
                 </Link>
@@ -114,31 +115,31 @@ export function Footer() {
 
         {/* Payments */}
         <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground">
+          <h2 className="text-sm font-semibold tracking-wider text-white uppercase">
             Payment Options
           </h2>
-          <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
+          <ul className="mt-4 space-y-2.5 text-sm text-gray-400">
             <li className="flex items-center gap-2">
-              <QrCode className="size-4 text-primary" aria-hidden="true" />
+              <QrCode className="size-4 text-white" aria-hidden="true" />
               QR / UPI Payment
             </li>
             <li className="flex items-center gap-2">
-              <Banknote className="size-4 text-primary" aria-hidden="true" />
+              <Banknote className="size-4 text-white" aria-hidden="true" />
               Cash on Delivery
             </li>
             <li className="flex items-center gap-2">
-              <CreditCard className="size-4 text-primary" aria-hidden="true" />
+              <CreditCard className="size-4 text-white" aria-hidden="true" />
               Secure online checkout
             </li>
           </ul>
-          <p className="mt-4 rounded-lg bg-muted px-3 py-2 text-xs text-muted-foreground">
+          <p className="mt-4 rounded-sm bg-white/10 px-3 py-2 text-xs text-gray-400">
             Safe &amp; secure shopping. Your details are never shared.
           </p>
         </div>
       </div>
 
-      <div className="border-t border-border">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-muted-foreground sm:flex-row sm:px-6">
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-gray-400 sm:flex-row sm:px-6">
           <p>
             © {year} {SITE_NAME}. All rights reserved.
           </p>

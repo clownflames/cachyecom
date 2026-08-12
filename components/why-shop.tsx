@@ -42,31 +42,31 @@ const features = [
 
 export function WhyShopSection() {
   return (
-    <section aria-labelledby="why-heading">
-      <div className="mb-5 text-center sm:mb-7">
+    <section
+      aria-labelledby="why-heading"
+      className="rounded-lg bg-white shadow-sm"
+    >
+      <div className="border-b border-border px-4 py-3 sm:px-5">
         <h2
           id="why-heading"
-          className="text-xl font-black tracking-tight sm:text-2xl lg:text-3xl"
+          className="text-base font-bold tracking-tight text-[#212121] sm:text-lg"
         >
           Why Shop With Us
         </h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          The BIG DEAL promise - great products, great prices, great service.
-        </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-px bg-[#f1f3f6] p-4 sm:grid-cols-2 sm:p-5 lg:grid-cols-3">
         {features.map((f) => (
           <div
             key={f.title}
-            className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 shadow-sm sm:p-5"
+            className="flex items-start gap-3 bg-white p-4"
           >
-            <span className="grid size-11 shrink-0 place-items-center rounded-lg bg-accent text-accent-foreground">
+            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-[#f1f3f6] text-[#2874f0]">
               <f.icon className="size-5" aria-hidden="true" />
             </span>
             <div>
-              <h3 className="font-semibold">{f.title}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              <h3 className="text-sm font-bold text-[#212121]">{f.title}</h3>
+              <p className="mt-1 text-xs leading-relaxed text-[#878787]">
                 {f.text}
               </p>
             </div>
