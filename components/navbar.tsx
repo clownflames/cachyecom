@@ -77,148 +77,140 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white shadow-sm">
       {/* Main bar */}
-      <div className="mx-auto flex h-14 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-6">
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          className="grid size-10 shrink-0 place-items-center rounded-md text-foreground transition-colors hover:bg-muted md:hidden"
-        >
-          {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
+      {/* Main bar */}
+<div className="border-b border-[#e0e0e0] bg-white">
+  <div className="mx-auto max-w-[1200px] px-4">
 
-        {/* Logo */}
-        <Link
-          href="/"
-          onClick={closeAll}
-          className="flex shrink-0 flex-col items-start justify-center"
-          aria-label={`${SITE_NAME} home`}
-        >
-          <Image
-            src="/logo.jpg"
-            alt={SITE_NAME}
-            width={90}
-            height={34}
-            priority
-            className="h-9 w-auto object-contain sm:h-10"
-            unoptimized
+    {/* Flipkart / Travel tabs */}
+    <div className="flex items-center gap-4 pt-4">
+      <Link
+        href="/"
+        className="flex h-11 w-[130px] items-center justify-center gap-2 rounded-xl bg-[#ffe500] text-sm font-bold text-black"
+      >
+        <Image
+          src="/logo.jpg"
+          alt="Flipkart"
+          width={70}
+          height={30}
+          className="h-7 w-auto object-contain"
+          unoptimized
+        /> 
+        Flipkart
+      </Link>
+
+      <button
+        type="button"
+        className="flex h-11 w-[130px] items-center justify-center gap-2 rounded-xl bg-[#f1f1f1] text-sm font-semibold text-[#333]"
+      >
+        <span className="text-xl">✈️</span>
+        Travel
+      </button>
+    </div>
+
+    {/* Search + actions */}
+    <div className="flex items-center gap-5 py-5">
+
+      {/* Search */}
+      <form
+        onSubmit={submitSearch}
+        role="search"
+        className="flex-1"
+      >
+        <div className="relative">
+          <input
+            ref={searchRef}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            type="search"
+            placeholder="Search for Products, Brands and More"
+            aria-label="Search products"
+            className="h-11 w-full rounded-xl border-2 border-[#2874f0] bg-white px-4 pr-12 text-sm outline-none placeholder:text-[#777] focus:ring-2 focus:ring-[#2874f0]/20"
           />
-          <span className="hidden text-[10px] font-semibold text-muted-foreground sm:block">
-            Explore Plus
-          </span>
-        </Link>
 
-        {/* Desktop search */}
-        <form
-          onSubmit={submitSearch}
-          role="search"
-          className="ml-2 hidden flex-1 md:block md:max-w-xl"
-        >
-          <div className="relative">
-            <input
-              ref={searchRef}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              type="search"
-              placeholder="Search for products, brands and more"
-              aria-label="Search products"
-              className="h-9 w-full rounded-sm border border-input bg-muted/40 px-3 pr-10 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-ring focus:bg-white focus:ring-2 focus:ring-ring/30"
-            />
-            <button
-              type="submit"
-              aria-label="Submit search"
-              className="absolute right-0 top-0 grid h-9 w-10 place-items-center text-[#2874f0]"
-            >
-              <Search className="size-5" />
-            </button>
-          </div>
-        </form>
-
-        <div className="ml-auto flex items-center gap-0.5 sm:gap-1">
-          {/* Mobile search toggle */}
           <button
-            type="button"
-            onClick={() => {
-              setSearchOpen((v) => !v);
-              if (!searchOpen) {
-                window.setTimeout(() => searchRef.current?.focus(), 0);
-              }
-            }}
-            aria-label="Search"
-            className="grid size-10 place-items-center rounded-md text-foreground transition-colors hover:bg-muted md:hidden"
+            type="submit"
+            aria-label="Submit search"
+            className="absolute right-0 top-0 grid h-11 w-12 place-items-center text-[#2874f0]"
           >
             <Search className="size-5" />
           </button>
-
-          {/* Desktop actions */}
-          <nav
-            className="hidden items-center gap-1 md:flex"
-            aria-label="Main navigation"
-          >
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setCategoriesOpen((v) => !v)}
-                aria-expanded={categoriesOpen}
-                aria-haspopup="true"
-                className="flex items-center gap-1 rounded-sm px-2.5 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-              >
-                More
-                <ChevronDown
-                  className={cn(
-                    "size-4 transition-transform",
-                    categoriesOpen && "rotate-180"
-                  )}
-                />
-              </button>
-              {categoriesOpen && (
-                <>
-                  <div
-                    className="fixed inset-0 z-40"
-                    onClick={() => setCategoriesOpen(false)}
-                    aria-hidden="true"
-                  />
-                  <div className="absolute right-0 z-50 mt-1 w-64 rounded-sm border border-border bg-popover p-2 shadow-lg">
-                    {[
-                      { label: "All Products", href: "/products" },
-                      { label: "Deals of the Day", href: "/products?sort=discount" },
-                    ].map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={closeAll}
-                        className="block rounded-sm px-3 py-2 text-sm text-popover-foreground transition-colors hover:bg-muted"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-          </nav>
-
-          {/* Cart */}
-          <Link
-            href="/cart"
-            onClick={closeAll}
-            aria-label={`Cart, ${count} items`}
-            className="flex items-center gap-1 rounded-sm px-2 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-          >
-            <span className="relative">
-              <ShoppingCart className="size-5" />
-              {hydrated && count > 0 && (
-                <span className="absolute -right-1.5 -top-1.5 grid min-w-[18px] place-items-center rounded-full bg-[#ff6161] px-1 text-[10px] font-bold text-white">
-                  {count > 99 ? "99+" : count}
-                </span>
-              )}
-            </span>
-            <span className="hidden lg:inline">Cart</span>
-          </Link>
         </div>
-      </div>
+      </form>
+
+      {/* Right actions — NO LOGIN */}
+      <nav
+        className="flex shrink-0 items-center gap-3"
+        aria-label="Main navigation"
+      >
+        {/* More */}
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => setCategoriesOpen((v) => !v)}
+            aria-expanded={categoriesOpen}
+            aria-haspopup="true"
+            className="flex items-center gap-1 px-2 py-2 text-sm font-medium text-[#212121]"
+          >
+            More
+            <ChevronDown
+              className={cn(
+                "size-4 transition-transform",
+                categoriesOpen && "rotate-180"
+              )}
+            />
+          </button>
+
+          {categoriesOpen && (
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setCategoriesOpen(false)}
+              />
+
+              <div className="absolute right-0 z-50 mt-2 w-64 rounded-md border bg-white p-2 shadow-lg">
+                <Link
+                  href="/products"
+                  onClick={closeAll}
+                  className="block rounded-md px-3 py-2 text-sm hover:bg-gray-100"
+                >
+                  All Products
+                </Link>
+
+                <Link
+                  href="/products?sort=discount"
+                  onClick={closeAll}
+                  className="block rounded-md px-3 py-2 text-sm hover:bg-gray-100"
+                >
+                  Deals of the Day
+                </Link>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Cart */}
+        <Link
+          href="/cart"
+          onClick={closeAll}
+          aria-label={`Cart, ${count} items`}
+          className="flex items-center gap-2 px-2 py-2 text-sm font-medium text-[#212121]"
+        >
+          <span className="relative">
+            <ShoppingCart className="size-5" />
+
+            {hydrated && count > 0 && (
+              <span className="absolute -right-2 -top-2 grid min-w-[18px] place-items-center rounded-full bg-[#ff6161] px-1 text-[10px] font-bold text-white">
+                {count > 99 ? "99+" : count}
+              </span>
+            )}
+          </span>
+
+          <span>Cart</span>
+        </Link>
+      </nav>
+    </div>
+  </div>
+</div>
 
       {/* Mobile search bar */}
       {searchOpen && (
