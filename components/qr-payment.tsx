@@ -15,15 +15,16 @@ import { formatPrice } from "@/lib/utils";
 type PaymentApp = "gpay" | "phonepe" | "amazon";
 
 function buildUpiLink(amount: number) {
-  const params = new URLSearchParams({
-    pa: PAYMENT_UPI_ID,
-    pn: PAYMENT_NAME,
-    am: String(Math.round(amount)),
-    cu: "INR",
-    tn: "Order payment",
-  });
+  const upiId = PAYMENT_UPI_ID.trim();
+  const name = PAYMENT_NAME.trim();
 
-  return `upi://pay?${params.toString()}`;
+  return (
+    `upi://pay?pa=${encodeURIComponent(upiId)}` +
+    `&pn=${encodeURIComponent(name)}` +
+    `&am=${encodeURIComponent(String(Math.round(amount)))}` +
+    `&cu=INR` +
+    `&tn=${encodeURIComponent("Order payment")}`
+  );
 }
 
 function BrandIcon({ icon }: { icon: PaymentApp }) {

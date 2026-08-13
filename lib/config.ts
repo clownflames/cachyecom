@@ -54,22 +54,13 @@ export const ADMIN_SESSION_SECRET =
  * Uses a NEXT_PUBLIC_ var because it is read inside a client component.
  */
 export const PAYMENT_UPI_ID =
-  process.env.NEXT_PUBLIC_PAYMENT_UPI_ID ?? "bigdeal@upi";
+  process.env.NEXT_PUBLIC_PAYMENT_UPI_ID?.trim() || "";
 
-/**
- * Name shown on the UPI payment screen / QR.
- */
 export const PAYMENT_NAME =
-  process.env.NEXT_PUBLIC_PAYMENT_NAME ?? "BIG DEAL";
+  process.env.NEXT_PUBLIC_PAYMENT_NAME?.trim() || SITE_NAME;
 
-/**
- * Optional static QR code image (e.g. "/qr-code.png").
- * - If set to a non-empty string, that image is shown on checkout.
- * - If left empty, a QR code is generated at runtime from PAYMENT_UPI_ID
- *   and the exact order amount using the `qrcode` package.
- */
 export const PAYMENT_QR_CODE =
-  process.env.NEXT_PUBLIC_PAYMENT_QR_CODE ?? "";
+  process.env.NEXT_PUBLIC_PAYMENT_QR_CODE?.trim() || "";
 
 /* ------------------------------------------------------------------ */
 /* Sale window                                                         */
